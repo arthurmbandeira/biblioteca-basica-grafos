@@ -9,7 +9,14 @@ def ler(G):
     y = int(spt[1])
     z = int(spt[2])
     if (not direcionado):
-        print("To Do")
+        if x in G.keys():
+            G[x].append((y, z))
+        else:
+            G[x] = [(y, z)]
+        if y in G.keys():
+            G[y].append((x, z))
+        else:
+            G[y] = [(x, z)]
     else:
         if x in G.keys():
             G[x].append((y, z))
