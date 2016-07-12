@@ -1,17 +1,27 @@
-class Vertice:
+class Vertice():
     """docstring for Vertice"""
     def __init__(self, chave):
-        self.id = arg
-        self.conexoes = {}
+        self.id = chave
+        self.cor = ""
+        self.pai = None
+        self.adj = {}
+        self.d = 0
+        self.f = 0
 
-    def addVizinho(self, vizinho, peso=0):
-        self.conexoes[vizinho] = peso
+    def addVizinho(self, vizinho, peso = 0):
+        self.adj[vizinho] = peso
 
-    def getConexoes(self):
-        return self.conexoes.keys()
+    def getAdj(self):
+        return self.adj.keys()
 
     def getID(self):
         return self.id
 
+    def getPai(self):
+        if (self.pai):
+            return self.pai.id
+        else:
+            return None
+
     def getPeso(self, vizinho):
-        return self.conexoes[vizinho]
+        return self.adj[vizinho]

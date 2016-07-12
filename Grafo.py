@@ -1,3 +1,5 @@
+from Vertice import Vertice
+
 class Grafo:
     """docstring for Grafo"""
     def __init__(self):
@@ -16,12 +18,15 @@ class Grafo:
         else:
             return None
 
-    def addAresta(self, f, t, peso = 0):
-        if f not in self.listaVertices:
-            nv = self.addVertice(f)
-        if t not in self.listaVertices:
-            nv = self.addVertice(t)
-        self.listaVertices[f].addVizinho(self.listaVertices[t], peso)
+    def addAresta(self, atual, vizinho, peso = 0):
+        if atual not in self.listaVertices:
+            nv = self.addVertice(atual)
+        if vizinho not in self.listaVertices:
+            nv = self.addVertice(vizinho)
+        self.listaVertices[atual].addVizinho(self.listaVertices[vizinho], peso)
 
     def getVertices(self):
         return self.listaVertices.keys()
+
+    def __iter__(self):
+        return iter(self.listaVertices.values())
