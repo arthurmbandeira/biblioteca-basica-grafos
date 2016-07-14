@@ -17,6 +17,9 @@ class Vertice():
     def getID(self):
         return self.id
 
+    def getCor(self):
+        return self.cor
+
     def getPai(self):
         if (self.pai):
             return self.pai.id
@@ -25,3 +28,6 @@ class Vertice():
 
     def getPeso(self, vizinho):
         return self.adj[vizinho]
+
+    def getTermino(self):
+        return self.f
