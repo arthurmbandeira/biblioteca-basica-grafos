@@ -29,25 +29,20 @@ def grafoTransposto(G):
     return Gt
 
 def dfsScc(Gt, u):
-    u = G.getVertice(u)
-    for k in G:
+    for k in Gt:
         k.cor = "branco"
         k.pai = None
     componente = 1
-    print("Lista de componentes\nComponente %d" % componente)
-    print(u.getID())
-    for i in G:
-        if u.getCor() == "branco":
-            dfsVisitScc(u)
+    print("Lista de componentes")
+    for i in Gt:
         if i.getCor() == "branco":
-            componente += 1
             print("\nComponente %d" % componente)
             print(i.getID())
             dfsVisitScc(i)
+            componente += 1
 
 def dfsVisitScc(u):
     global tempo
-    global topologicalSort
     tempo = tempo + 1
     u.cor = "cinza"
     u.d = tempo
@@ -57,18 +52,16 @@ def dfsVisitScc(u):
             print(v.getID())
             dfsVisitScc(v)
     u.cor = "preto"
-    topologicalSort.append(u.getID())
     tempo = tempo + 1
     u.f = tempo
-    print("Vértice " + str(u.getID()) + ", Pai " + str(u.getPai()) + ", Início " + str(u.d) + ", Término " + str(u.f))
 
 def scc(G, u):
-    global tmp
     dfs(G, u)
-    Gt = grafoTransposto(G)
     print("\n")
-    tmp = 0
-    dfs(Gt, u)
+    Gt = grafoTransposto(G)
+    Gt.topologicalSort = G.topologicalSort
+    Gt.topologicalSort.reverse()
+    dfsScc(Gt, Gt.topologicalSort[0])
 
 G = Grafo()
 nroVertices = int(stdin.readline())
@@ -86,7 +79,7 @@ for i in range(nroArestas):
 # inicialDFS = 1
 # dfs(G, inicialDFS)
 print("\n")
-# tempo = 0
+tempo = 0
 # topologicalSort = []
 scc(G, 3)
 # bfs(G, 2)

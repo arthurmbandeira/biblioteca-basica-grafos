@@ -5,6 +5,7 @@ class Grafo:
     def __init__(self):
         self.listaVertices = {}
         self.numVertices = 0
+        self.topologicalSort = []
 
     def addVertice(self, chave):
         self.numVertices += 1

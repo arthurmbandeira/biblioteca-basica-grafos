@@ -12,6 +12,7 @@ def dfs(G, u):
             dfsVisit(u)
         if i.getCor() == "branco":
             dfsVisit(i)
+    G.topologicalSort = topologicalSort
 
 def dfsVisit(u):
     global tmp
@@ -23,7 +24,7 @@ def dfsVisit(u):
             v.pai = u
             dfsVisit(v)
     u.cor = "preto"
-    topologicalSort.append(u.getID())
+    topologicalSort.append(u)
     tmp = tmp + 1
     u.f = tmp
     print("Vértice " + str(u.getID()) + ", Pai " + str(u.getPai()) + ", Início " + str(u.d) + ", Término " + str(u.f))
