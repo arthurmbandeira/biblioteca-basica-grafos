@@ -15,14 +15,14 @@ def dfsScc(Gt, u):
     for k in Gt:
         k.cor = "branco"
         k.pai = None
-    componente = 1
+    componente = 0
     print("Lista de componentes")
     for i in Gt:
         if i.getCor() == "branco":
             print("\nComponente %d" % componente)
             print(i.getID())
-            dfsVisitScc(i)
             componente += 1
+            dfsVisitScc(i)
 
 def dfsVisitScc(u):
     global tempo

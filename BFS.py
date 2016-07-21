@@ -20,4 +20,4 @@ def bfs(G, s):
                 v.cor = "cinza"
                 Q.append(v)
         u.cor = "preto"
-        print("Vértice " + str(u.getID()) + ", Pai " + str(u.getPai()))
+        print("Vértice " + str(u.getID()) + ": Pai " + str(u.getPai()) + ", Nível " + str(u.d))

@@ -7,6 +7,7 @@ class Vertice:
         self.adj = {}
         self.d = 0
         self.f = 0
+        self.nivel = 0
 
     def addVizinho(self, vizinho, peso = 0):
         self.adj[vizinho] = peso
@@ -33,3 +34,6 @@ class Vertice:
 
     def getTermino(self):
         return self.f
+
+    def getNivel(self):
+        return self.nivel
