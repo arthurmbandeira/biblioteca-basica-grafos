@@ -1,4 +1,4 @@
-class Vertice():
+class Vertice:
     """docstring for Vertice"""
     def __init__(self, chave):
         self.id = chave
@@ -27,7 +27,9 @@ class Vertice():
             return None
 
     def getPeso(self, vizinho):
-        return self.adj[vizinho]
+        if (self.adj[vizinho]):
+            return self.adj[vizinho]
+        else: return None
 
     def getTermino(self):
         return self.f
