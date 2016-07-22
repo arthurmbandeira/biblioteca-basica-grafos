@@ -1,7 +1,9 @@
 #Arthur Manuel Bandeira - RA 67226
 
-from sys import stdin
+import argparse
 import heapq
+
+import tkinter as tk
 
 from Grafo import Grafo
 from DFS import *
@@ -10,7 +12,7 @@ from SCC import *
 from bellmannFord import *
 
 def ler(G):
-    line = stdin.readline()
+    line = f.readline()
     spt = line.split()
     x = (spt[0])
     y = (spt[1])
@@ -29,20 +31,36 @@ def imprimeGrafo(G):
     print("\n")
 
 G = Grafo()
-nroVertices = int(stdin.readline())
-nroArestas = int(stdin.readline())
-direcionado = int(stdin.readline())
+
+f = open('testes/teste2.txt', 'r')
+
+nroVertices = int(f.readline())
+nroArestas = int(f.readline())
+direcionado = int(f.readline())
 for i in range(nroArestas):
     ler(G)
 
+
+inicialDFS = input("Vértice Inicial DFS: ")
+
+print(inicialDFS)
+# parser = argparse.ArgumentParser(description="Entrada de dados.")
 
 imprimeGrafo(G)
 # inicialDFS = 'u'
 # dfs(G, inicialDFS)
 # print("\n")
 # topologicalSort = []
-# scc(G, 'c')
+scc(G, inicialDFS)
 # bfs(G, 'a')
-# print(bellmandFord(G, 1))
+# print(bellmandFord(G, '1'))
+# caminhoBF(G, 's', 'x')
 
-# print("\n")
+print("\n")
+
+# root = tk.Tk()
+
+# root.title("Grafos")
+# root.geometry("800x600")
+
+# root.mainloop()

@@ -1,9 +1,10 @@
 from Vertice import Vertice
+from collections import OrderedDict
 
 class Grafo:
     """docstring for Grafo"""
     def __init__(self):
-        self.listaVertices = {}
+        self.listaVertices = OrderedDict()
         self.numVertices = 0
         self.topologicalSort = []
 

@@ -21,3 +21,18 @@ def bellmandFord(G, s):
                 if v.d > (u.d + u.getPeso(v)):
                     return False
     return True
+
+def caminhoBF(G, s, t):
+    t = G.getVertice(t)
+    atual = t
+    pesoTotal = 0
+    bellmandFord(G, s)
+    while(atual):
+        print(atual.getID(), atual.d)
+        pesoTotal += atual.d
+        if atual.pai:
+            print("Pai: " + str(atual.pai.getID()))
+        else:
+            print("Pai Null")
+        atual = atual.pai
+    print("Peso Total :" + str(pesoTotal))
