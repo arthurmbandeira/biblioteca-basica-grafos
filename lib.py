@@ -1,18 +1,17 @@
 #Arthur Manuel Bandeira - RA 67226
 
-import argparse
 import heapq
-
-import tkinter as tk
 
 from Grafo import Grafo
 from DFS import *
 from BFS import *
 from SCC import *
-from bellmannFord import *
+from bellmanFord import *
 
-def ler(G):
-    line = f.readline()
+G = Grafo()
+
+def ler(G, file, direcionado):
+    line = file.readline()
     spt = line.split()
     x = (spt[0])
     y = (spt[1])
@@ -28,39 +27,90 @@ def imprimeGrafo(G):
     for v in G:
         for w in v.getAdj():
             print(v.getID(), w.getID(), v.getPeso(w))
-    print("\n")
+    print('\n')
 
-G = Grafo()
+def abreArquivo(path):
+    try:
+        f = open(path, 'r')
+    except FileNotFoundError:
+        print("Arquivo inexistente ou inacessivel na pasta testes, tente novamente...")
+        interfaceArquivo()
+        return
 
-f = open('testes/teste2.txt', 'r')
+    nroVertices = int(f.readline())
+    nroArestas = int(f.readline())
+    direcionado = int(f.readline())
+    for i in range(nroArestas):
+        ler(G, f, direcionado)
 
-nroVertices = int(f.readline())
-nroArestas = int(f.readline())
-direcionado = int(f.readline())
-for i in range(nroArestas):
-    ler(G)
+    f.close()
 
+def interfaceArquivo():
+    arquivo = input("Digite o nome do arquivo de entrada (deve estar na pasta testes): ")
+    arquivo = "testes/" + str(arquivo) + ".txt"
+    abreArquivo(arquivo)
 
-inicialDFS = input("Vértice Inicial DFS: ")
+def menu():
+    print('\n')
+    print("Escolha uma das opções ou pressione 'q' para sair")
+    print("[1] Busca em Largura")
+    print("[2] Busca em Profundidade")
+    print("[3] Componentes Fortementes Conectados")
+    print("[4] Caminho Mínimo - Bellman Ford")
+    print("[5] Imprimir Grafo")
+    print("[6] Trocar arquivo")
+    print("[q] Sair")
 
-print(inicialDFS)
-# parser = argparse.ArgumentParser(description="Entrada de dados.")
+print('\n')
+print("0000000000000000000000000000000000000000000000000000000000000000000000000000")
+print("00************************************************************************00")
+print("00******************    Biblioteca Basica de Grafos     ******************00")
+print("00************************************************************************00")
+print("0000000000000000000000000000000000000000000000000000000000000000000000000000")
+print('\n')
 
-imprimeGrafo(G)
-# inicialDFS = 'u'
-# dfs(G, inicialDFS)
-# print("\n")
-# topologicalSort = []
-scc(G, inicialDFS)
-# bfs(G, 'a')
-# print(bellmandFord(G, '1'))
-# caminhoBF(G, 's', 'x')
-
-print("\n")
-
-# root = tk.Tk()
-
-# root.title("Grafos")
-# root.geometry("800x600")
-
-# root.mainloop()
+interfaceArquivo()
+menu()
+while True:
+    teclado = input()
+    if teclado == '1':
+        s = input("Informe o vertice inicial: ")
+        print('\n')
+        if s not in G.getVertices():
+            print("Este vertice nao pertence ao grafo, tente novamente.")
+        else:
+            bfs(G, s)
+    elif teclado == '2':
+        s = input("Informe o vertice inicial: ")
+        print('\n')
+        if s not in G.getVertices():
+            print("Este vertice nao pertence ao grafo, tente novamente.")
+        else:
+            dfs(G, s)
+    elif teclado == '3':
+        s = input("Informe o vertice inicial: ")
+        print('\n')
+        if s not in G.getVertices():
+            print("Este vertice nao pertence ao grafo, tente novamente.")
+        else:
+            scc(G, s)
+    elif teclado == '4':
+        s = input("Informe o vertice inicial: ")
+        t = input("Informe o vertice destino: ")
+        print('\n')
+        if s not in G.getVertices():
+            print("O vertice inicial nao pertence ao grafo, tente novamente.")
+        else:
+            caminhoBF(G, s, t)
+    elif teclado == '5':
+        imprimeGrafo(G)
+    elif teclado == '6':
+        del G
+        G = Grafo()
+        interfaceArquivo()
+        imprimeGrafo(G)
+    elif teclado == 'q':
+        print("Tchau!")
+        break
+    else:
+        menu()

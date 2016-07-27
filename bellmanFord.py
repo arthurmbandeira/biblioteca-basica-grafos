@@ -9,7 +9,7 @@ def relax(u, v):
         v.d = u.d + u.getPeso(v)
         v.pai = u
 
-def bellmandFord(G, s):
+def bellmanFord(G, s):
     s = G.getVertice(s)
     initializeSingleSource(G, s)
     for i in range(G.numVertices - 1):
@@ -24,15 +24,20 @@ def bellmandFord(G, s):
 
 def caminhoBF(G, s, t):
     t = G.getVertice(t)
+    if t not in G:
+        print("Vértice destino não pertence ao Grafo")
+        return
     atual = t
     pesoTotal = 0
-    bellmandFord(G, s)
+    bellmanFord(G, s)
+    saida = []
     while(atual):
-        print(atual.getID(), atual.d)
+        saida.append((atual.getID(), atual.d))
         pesoTotal += atual.d
         if atual.pai:
             print("Pai: " + str(atual.pai.getID()))
         else:
             print("Pai Null")
         atual = atual.pai
-    print("Peso Total :" + str(pesoTotal))
+    print(saida[::-1])
+    print("Peso Total: " + str(pesoTotal))
