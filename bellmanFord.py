@@ -25,7 +25,7 @@ def bellmanFord(G, s):
 def caminhoBF(G, s, t):
     t = G.getVertice(t)
     if t not in G:
-        print("Vértice destino não pertence ao Grafo")
+        print("Vwrtice destino nao pertence ao Grafo")
         return
     atual = t
     pesoTotal = 0
@@ -39,5 +39,4 @@ def caminhoBF(G, s, t):
         else:
             print("Pai Null")
         atual = atual.pai
-    print(saida[::-1])
     print("Peso Total: " + str(pesoTotal))

@@ -52,11 +52,11 @@ def interfaceArquivo():
 
 def menu():
     print('\n')
-    print("Escolha uma das opções ou pressione 'q' para sair")
+    print("Escolha uma das opcoes ou pressione 'q' para sair")
     print("[1] Busca em Largura")
     print("[2] Busca em Profundidade")
     print("[3] Componentes Fortementes Conectados")
-    print("[4] Caminho Mínimo - Bellman Ford")
+    print("[4] Caminho Minimo - Bellman Ford")
     print("[5] Imprimir Grafo")
     print("[6] Trocar arquivo")
     print("[q] Sair")

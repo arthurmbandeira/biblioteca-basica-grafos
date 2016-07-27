@@ -31,4 +31,4 @@ def dfsVisit(u):
     topologicalSort.append(u)
     tmp = tmp + 1
     u.f = tmp
-    print("Vértice " + str(u.getID()) + ": Pai " + str(u.getPai()) + ", Nível " + str(u.getNivel()))
+    print("Vertice " + str(u.getID()) + ": Pai " + str(u.getPai()) + ", Nivel " + str(u.getNivel()))
