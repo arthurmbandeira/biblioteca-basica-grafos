@@ -1,15 +1,17 @@
-#Arthur Manuel Bandeira - RA 67226
+''' Arthur Manuel Bandeira - RA 67226 '''
+''' Arquivo Principal da Biblioteca Básica de Grafos '''
+''' Disciplina de Algoritmos em Grafos - 2016 '''
 
-import heapq
-
-from Grafo import Grafo
+from Grafo import *
 from DFS import *
 from BFS import *
 from SCC import *
 from bellmanFord import *
 
+# Instancia um Grafo G
 G = Grafo()
 
+# Função para ler o arquivo de entrada
 def ler(G, file, direcionado):
     line = file.readline()
     spt = line.split()
@@ -23,12 +25,13 @@ def ler(G, file, direcionado):
         G.addAresta(x, y, z)
     return G
 
+#Função para imprimir os pares de vértices que formam o Grafo
 def imprimeGrafo(G):
     for v in G:
         for w in v.getAdj():
             print(v.getID(), w.getID(), v.getPeso(w))
-    print('\n')
 
+#Função que abre o arquivo de entrada
 def abreArquivo(path):
     try:
         f = open(path, 'r')
@@ -45,13 +48,14 @@ def abreArquivo(path):
 
     f.close()
 
+#Função que pede ao usuário o nome do arquivo de entrada
 def interfaceArquivo():
-    arquivo = input("Digite o nome do arquivo de entrada (deve estar na pasta testes): ")
-    arquivo = "testes/" + str(arquivo) + ".txt"
+    arquivo = input("Digite o nome do arquivo de entrada com a extensão (deve estar na pasta testes): ")
+    arquivo = "testes/" + str(arquivo)
     abreArquivo(arquivo)
 
+#Menu de opções
 def menu():
-    print('\n')
     print("Escolha uma das opcoes ou pressione 'q' para sair")
     print("[1] Busca em Largura")
     print("[2] Busca em Profundidade")
@@ -69,6 +73,7 @@ print("00***********************************************************************
 print("0000000000000000000000000000000000000000000000000000000000000000000000000000")
 print('\n')
 
+#Interação com o usuário
 interfaceArquivo()
 menu()
 while True:
